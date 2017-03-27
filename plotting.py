@@ -27,15 +27,16 @@ def plot_pie_group(data, group, title):
 
     sizes = data.groupby(group).size()
 
-    axes = sizes.plot.pie()
+    axes = sizes.plot.pie(autopct='%1.1f%%')
     axes.set_title(title)
+    axes.axis('equal')
 
     return axes
 
 
 if __name__ == "__main__":
 
-    with open("census2011.csv", 'r') as f:
+    with open("./census2011.csv", 'r') as f:
         data = read_data(f)
 
     plot_bar_group(
