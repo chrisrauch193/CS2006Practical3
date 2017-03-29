@@ -12,9 +12,9 @@ def FilterType(df, variable, type_list):
 
 def FilterDigits(df, variable, max_digit, no_code):
     if no_code:
-        return df[(df[variable].isin(range(0, max_digit + 1))) | (df[variable] == -9)]
+        return df[(df[variable].isin(range(1, max_digit + 1))) | (df[variable] == -9)]
     else:
-        return df[df[variable].isin(range(0, max_digit + 1))]
+        return df[df[variable].isin(range(1, max_digit + 1))]
 
 
 def FilterAllTypes(df, all_types):
@@ -29,7 +29,7 @@ def FilterDigitVariables(df, digit_variables):
         return FilterDigits(df, digit_variable[0], digit_variable[1], digit_variable[2])
 
 def FilterDuplicates(df, variable):
-    return df.drop_duplicates(subset=variable, keep='last')
+    return df.drop_duplicates(subset=variable, keep=False)
 
 
 def DigitDiscrepanciesQueryFilter(df, investigation_variable, investigation_values, discrepancy_variable, discrepancy_values):
@@ -96,11 +96,11 @@ def StudentEconomicActivityDis(df):
     # Student must have 4, 6 or -9 for Economic Activity
     return DigitDiscrepanciesQueryFilter(df, "Student", [1], "Economic Activity", [1, 2, 3, 5, 7, 8, 9])
 
-def FTStudentHoursWorked(df):
+def FTStudent(df):
     # Student must have 4, 6 or -9 for Economic Activity
     return DigitDiscrepanciesQueryFilter(df, "Student", [1], "Economic Activity", [4])
 
-def ChildStudentHoursWorked(df):
+def InactiveStudent(df):
     # Student must have 4, 6 or -9 for Economic Activity
     return DigitDiscrepanciesQueryFilter(df, "Student", [1], "Economic Activity", [6])
 
@@ -109,7 +109,7 @@ def ChildStudentHoursWorked(df):
 # refineData()
 #
 # df = pd.read_csv("./census2011.csv")
-# df = StudentEconomicActivityDis(df)
+# df = FilterDuplicates(df, "Person ID")
 #
 # print(str(df))
 
