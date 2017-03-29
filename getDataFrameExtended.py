@@ -21,4 +21,5 @@ def getData():
         del df['Type']
         frame = pd.concat([frame,df], ignore_index=True)
     frame = frame.replace(np.nan, '-', regex=True)
+    frame = frame.sort_values(['Match Number', 'Innings', 'Ball No.'], ascending=[1, 1,1])
     return frame
