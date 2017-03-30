@@ -6,5 +6,5 @@ RUN \
   git clone https://github.com/chrisrauch193/CS2006Practical3.git && \
   pip install pandas numpy matplotlib matplotlib.pyplot os csv jupyter
 
-CMD jupyter notebook && \
-    Y
+CMD jupyter notebook
+CMD Y
