@@ -8,6 +8,6 @@ RUN \
   python3-pip \
   python-virtualenv && \
   git clone https://553bd177d76215c8ed19a1c9c7789965394abcb0:x-oauth-basic@github.com/chrisrauch193/CS2006Practical3.git && \
-  pip install -r Dependencies/requirements.txt
+  pip install -r CS2006Practical3/Dependencies/requirements.txt
 
 CMD jupyter notebook
