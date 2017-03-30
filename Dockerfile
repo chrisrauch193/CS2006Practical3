@@ -6,6 +6,6 @@ RUN \
   python3-dev \
   python3-pip \
   python3-virtualenv && \
-  pip install -r requirements
+  pip install -r Dependencies/requirements.txt
 
 CMD jupyter notebook
