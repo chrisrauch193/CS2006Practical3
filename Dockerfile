@@ -7,4 +7,5 @@ RUN \
   pip install pandas numpy matplotlib matplotlib.pyplot os csv jupyter
 
 CMD jupyter notebook
-CMD Y
+CMD y
+
