@@ -10,7 +10,7 @@ def getData():
     venue = 0
     matchno = 0;
     winner = ''
-    for file in filelist:
+    for file in filter(lambda file: '.csv' in file, filelist):
         with open(path+file,"r") as f:
             csvObj = csv.reader(f)
             csvObj = list(csvObj)
