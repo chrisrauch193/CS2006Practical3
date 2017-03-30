@@ -1,5 +1,6 @@
 FROM ubuntu:14.04
-ADD ~/.ssh/mykey /tmp/  
+
+RUN  echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
 RUN \
   apt-get update -y && apt-get install -yqq \
@@ -8,7 +9,6 @@ RUN \
   python3-dev \
   python3-pip \
   python-virtualenv && \
-  ssh-agent /tmp  && \
   git clone https://github.com/chrisrauch193/CS2006Practical3.git && \
   pip install -r Dependencies/requirements.txt
 
