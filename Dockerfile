@@ -2,16 +2,18 @@ FROM ubuntu:14.04
 
 MAINTAINER Christopher Rauch
 
-# Add the application resources URL
-RUN echo "deb http://archive.ubuntu.com/ubuntu/ $(lsb_release -sc) main universe" >> /etc/apt/sources.list
-
 RUN apt-get update
 
-RUN apt-get -y install tar git curl nano wget dialog net-tools build-essential
+RUN apt-get -y install git
 RUN git clone https://553bd177d76215c8ed19a1c9c7789965394abcb0:x-oauth-basic@github.com/chrisrauch193/CS2006Practical3.git
 
-RUN apt-get install -y python python-dev python-distribute python-pip python-virtualenv
+#RUN apt-get install -y python3 python3-dev python3-distribute python-pip3 
+#python-virtualenv
 #RUN pip install -r CS2006Practical3/Dependencies/requirements.txt
-RUN pip install jupyter
+
+
+RUN apt-get install -y python3 python-pip3 
+
+RUN pip install pandas
 
 CMD jupyter notebook
