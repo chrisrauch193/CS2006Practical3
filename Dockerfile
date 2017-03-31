@@ -14,6 +14,6 @@ RUN git clone https://553bd177d76215c8ed19a1c9c7789965394abcb0:x-oauth-basic@git
 
 RUN apt-get install -y python3 python3-pip 
 
-RUN python3-pip install pandas
+#RUN python3-pip install pandas
 
 CMD jupyter notebook
