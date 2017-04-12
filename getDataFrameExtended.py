@@ -32,4 +32,10 @@ def getData():
 
     frame = frame.replace(np.nan, '-', regex=True)
     frame = frame.sort_values(['Match Number', 'Innings', 'Ball No.'], ascending=[1, 1, 1])
+    frame = frame[frame["Ball No."] != 'D/L']
+    frame['Runs'] = frame['Runs'].astype(int)
+    frame['Ball No.'] = frame['Ball No.'].astype(float)
+    frame['Extras'] = frame['Extras'].astype(int)
+    frame['Innings'] = frame['Innings'].astype(int)
+    frame['Match Number'] = frame['Match Number'].astype(int)
     return frame
