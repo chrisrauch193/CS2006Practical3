@@ -1,3 +1,6 @@
+import pandas as pd
+
+
 def data_translation(field, value):
 
     def person_id(value):
@@ -189,7 +192,7 @@ def data_translation(field, value):
     def industry(value):
 
         lookup = {
-            1: 'Agriculture, FOrestry adn Fishing',
+            1: 'Agriculture, Forestry and Fishing',
             2: 'Mining and Quarrying',
             3: 'Construction',
             4: 'Wholesale and Retail Trade',
@@ -252,3 +255,16 @@ def data_translation(field, value):
     }
 
     return translations[field](value)
+
+
+def read_data(file):
+
+    data = pd.read_csv(file)
+
+    return data
+
+
+def translate(data):
+
+    for field in data:
+        data[field] = data[field].apply(lambda value: data_translation(field, value))
