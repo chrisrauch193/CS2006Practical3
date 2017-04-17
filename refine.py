@@ -96,11 +96,11 @@ def StudentEconomicActivityDis(df):
     # Student must have 4, 6 or -9 for Economic Activity
     return DigitDiscrepanciesQueryFilter(df, "Student", [1], "Economic Activity", [1, 2, 3, 5, 7, 8, 9])
 
-def FTStudentHoursWorked(df):
+def FTStudent(df):
     # Student must have 4, 6 or -9 for Economic Activity
     return DigitDiscrepanciesQueryFilter(df, "Student", [1], "Economic Activity", [4])
 
-def ChildStudentHoursWorked(df):
+def InactiveStudent(df):
     # Student must have 4, 6 or -9 for Economic Activity
     return DigitDiscrepanciesQueryFilter(df, "Student", [1], "Economic Activity", [6])
 
@@ -112,4 +112,3 @@ def ChildStudentHoursWorked(df):
 # df = StudentEconomicActivityDis(df)
 #
 # print(str(df))
-

@@ -99,12 +99,10 @@ average_hours_worked_PT_FS = ((full_student_PT_total1 * num_hours_list[0]) + (fu
 # Average Full-Time hours worked by an Economically Active Full-Time Students
 average_hours_worked_FT_FS = ((full_student_FT_total3 * num_hours_list[2]) + (full_student_FT_total4 * num_hours_list[3])) \
                              / (full_student_FT_total3 + full_student_FT_total4)
-
-
+print(student_FT_total3)
 print(average_hours_worked_PT_S)
 print(average_hours_worked_FT_S)
 # print(average_hours_worked_PT_CS)
 # print(average_hours_worked_FT_CS)
 print(average_hours_worked_PT_FS)
 print(average_hours_worked_FT_FS)
-print("cats")
