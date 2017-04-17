@@ -101,6 +101,8 @@ average_hours_worked_FT_FS = ((full_student_FT_total3 * num_hours_list[2]) + (fu
                              / (full_student_FT_total3 + full_student_FT_total4)
 
 
+print(student_FT_total3)
+
 print(average_hours_worked_PT_S)
 print(average_hours_worked_FT_S)
 # print(average_hours_worked_PT_CS)
