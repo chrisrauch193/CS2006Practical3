@@ -5,7 +5,7 @@ from matplotlib.collections import PatchCollection
 from matplotlib.colors import Normalize
 
 
-def plot_map(df)
+def plot_map(df):
 
     fig, axes = plt.subplots(figsize=(10, 20))
     data_map = Basemap(
