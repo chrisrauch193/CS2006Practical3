@@ -1,4 +1,5 @@
 import pandas as pd
+import copy
 
 
 def data_translation(field, value):
@@ -257,14 +258,10 @@ def data_translation(field, value):
     return translations[field](value)
 
 
-def read_data(file):
+def translate(df):
 
-    data = pd.read_csv(file)
+    result = copy.deepcopy(df)
+    for field in result:
+        result[field] = result[field].apply(lambda value: data_translation(field, value))
 
-    return data
-
-
-def translate(data):
-
-    for field in data:
-        data[field] = data[field].apply(lambda value: data_translation(field, value))
+    return result
