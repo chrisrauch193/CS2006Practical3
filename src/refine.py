@@ -47,6 +47,7 @@ def filter_duplicates(df, variable):
 def refine_data(df):
     """Return a refined dataset for the 2011 UK census."""
 
+    # Set up the structures for filtering non-numeric variables.
     regions = [
         "Region",
         ["E12000001", "E12000002", "E12000003", "E12000004", "E12000005",
@@ -54,9 +55,12 @@ def refine_data(df):
     ]
     residence_types = ["Residence Type", ["H", "C"]]
 
+    # Define the 'no code' number, and a filler for those variables that
+    # require a code.
     no_code = -9
     fill = None
 
+    # Set up structures for filtering numeric variables.
     family_composition = ["Family Composition", 6, no_code]
     population_base = ["Population Base", 3, fill]
     sex = ["Sex", 2, fill]
@@ -72,25 +76,25 @@ def refine_data(df):
     hours_worked_per_week = ["Hours worked per week", 4, no_code]
     approximated_social_grade = ["Approximated Social Grade", 4, no_code]
 
+    # Combine structures.
     all_types = [regions, residence_types]
-
     digit_variables = [
         family_composition, population_base, sex, age, martial_status, student,
         country_of_birth, health, ethnic_group, religion, economic_activity,
         occupation, hours_worked_per_week, approximated_social_grade
     ]
 
-    # Filtering out any NaNs
+    # Filter out records with any NaN values.
     df = df.dropna()
 
-    # Filtering Null Personal ID's
+    # Filter out records with null Personal IDs.
     df = filter_null(df, "Person ID")
 
+    # Filter out records with values not in the specified range.
     df = filter_all_types(df, all_types)
-
     df = filter_digit_variables(df, digit_variables)
 
-    # Remove Duplicate Person ID's
+    # Remove duplicate Person IDs.
     df = filter_duplicates(df, "Person ID")
 
     return df
