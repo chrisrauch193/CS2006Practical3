@@ -40,3 +40,8 @@ The Binder virtual environment has also been provided to run the project without
   mybinder.org/repo/chrisrauch193/cs2006practical3
 
 The first attempt at launching may result in failure, but refreshing will fix this problem.
+
+
+4. Docker
+
+A Dockerfile was made to allow use of Docker distribution. It was created to use the repo when the repo was private. It worked and was built successfully, but now that the repo is the public and is using the binder it may not work. We have included screenshots to show proof of successful builds.

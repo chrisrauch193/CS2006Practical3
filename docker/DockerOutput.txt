@@ -1,0 +1,1849 @@
+FROM ubuntu:14.04
+
+MAINTAINER Christopher Rauch
+
+RUN apt-get update && apt-get install build-essential -y
+
+RUN apt-get -y install git
+RUN git clone https://553bd177d76215c8ed19a1c9c7789965394abcb0:x-oauth-basic@github.com/chrisrauch193/CS2006Practical3.git
+
+RUN xargs -a CS2006Practical3/Dependencies/apt-packages.txt apt-get install -y
+
+RUN pip install virtualenv
+RUN /usr/local/bin/virtualenv /opt/ds --distribute --python=/usr/bin/python3
+
+RUN /opt/ds/bin/pip install -r CS2006Practical3/Dependencies/requirements.txt
+
+EXPOSE 8888
+
+#############
+#RUN apt-get install -y python3 python3-dev python3-distribute python-pip3 
+#python-virtualenv
+#RUN pip install -r CS2006Practical3/Dependencies/requirements.txt
+
+
+#RUN apt-get install -y python3 python3-pip 
+
+#RUN python3-pip install pandas
+
+#CMD jupyter notebook
+###############
+Logs
+Building in Docker Cloud's infrastructure...
+Cloning into '.'...
+
+Warning: Permanently added the RSA host key for IP address '192.30.253.113' to the list of known hosts.
+
+KernelVersion: 4.4.0-72-generic
+Arch: amd64
+BuildTime: 2017-03-28T19:26:53.326478373+00:00
+ApiVersion: 1.27
+Version: 17.03.1-ee-2
+MinAPIVersion: 1.12
+GitCommit: ad495cb
+Os: linux
+GoVersion: go1.7.5
+Starting build of index.docker.io/chrisrauch193/cs2006practical3:latest...
+Step 1/10 : FROM ubuntu:14.04
+
+ ---> 302fa07d8117
+
+Step 2/10 : MAINTAINER Christopher Rauch
+
+ ---> Running in d786396a4a11
+
+ ---> 34b76afa7e2f
+
+Removing intermediate container d786396a4a11
+
+Step 3/10 : RUN apt-get update && apt-get install build-essential -y
+
+ ---> Running in 46211ad38b7e
+
+Ign http://archive.ubuntu.com trusty InRelease
+
+Get:1 http://archive.ubuntu.com trusty-updates InRelease [65.9 kB]
+
+Get:2 http://archive.ubuntu.com trusty-security InRelease [65.9 kB]
+
+Get:3 http://archive.ubuntu.com trusty Release.gpg [933 B]
+
+Get:4 http://archive.ubuntu.com trusty Release [58.5 kB]
+
+Get:5 http://archive.ubuntu.com trusty-updates/main Sources [489 kB]
+
+Get:6 http://archive.ubuntu.com trusty-updates/restricted Sources [6467 B]
+
+Get:7 http://archive.ubuntu.com trusty-updates/universe Sources [224 kB]
+
+Get:8 http://archive.ubuntu.com trusty-updates/main amd64 Packages [1219 kB]
+
+Get:9 http://archive.ubuntu.com trusty-updates/restricted amd64 Packages [21.2 kB]
+
+Get:10 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [521 kB]
+
+Get:11 http://archive.ubuntu.com trusty-security/main Sources [164 kB]
+
+Get:12 http://archive.ubuntu.com trusty-security/restricted Sources [5066 B]
+
+Get:13 http://archive.ubuntu.com trusty-security/universe Sources [61.0 kB]
+
+Get:14 http://archive.ubuntu.com trusty-security/main amd64 Packages [753 kB]
+
+Get:15 http://archive.ubuntu.com trusty-security/restricted amd64 Packages [17.8 kB]
+
+Get:16 http://archive.ubuntu.com trusty-security/universe amd64 Packages [201 kB]
+
+Get:17 http://archive.ubuntu.com trusty/main Sources [1335 kB]
+
+Get:18 http://archive.ubuntu.com trusty/restricted Sources [5335 B]
+
+Get:19 http://archive.ubuntu.com trusty/universe Sources [7926 kB]
+
+Get:20 http://archive.ubuntu.com trusty/main amd64 Packages [1743 kB]
+
+Get:21 http://archive.ubuntu.com trusty/restricted amd64 Packages [16.0 kB]
+
+Get:22 http://archive.ubuntu.com trusty/universe amd64 Packages [7589 kB]
+
+Fetched 22.5 MB in 16s (1330 kB/s)
+Reading package lists...
+
+
+Reading package lists...
+
+
+Building dependency tree...
+
+Reading state information...
+
+The following extra packages will be installed:
+  binutils cpp cpp-4.8 dpkg-dev fakeroot g++ g++-4.8 gcc gcc-4.8
+  libalgorithm-diff-perl libalgorithm-diff-xs-perl libalgorithm-merge-perl
+  libasan0 libatomic1 libc-dev-bin libc6-dev libcloog-isl4 libdpkg-perl
+  libfakeroot libfile-fcntllock-perl libgcc-4.8-dev libgmp10 libgomp1 libisl10
+  libitm1 libmpc3 libmpfr4 libquadmath0 libstdc++-4.8-dev libtimedate-perl
+  libtsan0 linux-libc-dev make manpages manpages-dev patch xz-utils
+
+Suggested packages:
+  binutils-doc cpp-doc gcc-4.8-locales debian-keyring g++-multilib
+  g++-4.8-multilib gcc-4.8-doc libstdc++6-4.8-dbg gcc-multilib autoconf
+  automake1.9 libtool flex bison gdb gcc-doc gcc-4.8-multilib libgcc1-dbg
+  libgomp1-dbg libitm1-dbg libatomic1-dbg libasan0-dbg libtsan0-dbg
+  libquadmath0-dbg glibc-doc libstdc++-4.8-doc make-doc man-browser ed
+  diffutils-doc
+
+The following NEW packages will be installed:
+  binutils build-essential cpp cpp-4.8 dpkg-dev fakeroot g++ g++-4.8 gcc
+  gcc-4.8 libalgorithm-diff-perl libalgorithm-diff-xs-perl
+  libalgorithm-merge-perl libasan0 libatomic1 libc-dev-bin libc6-dev
+  libcloog-isl4 libdpkg-perl libfakeroot libfile-fcntllock-perl libgcc-4.8-dev
+  libgmp10 libgomp1 libisl10 libitm1 libmpc3 libmpfr4 libquadmath0
+  libstdc++-4.8-dev libtimedate-perl libtsan0 linux-libc-dev make manpages
+  manpages-dev patch xz-utils
+
+0 upgraded, 38 newly installed, 0 to remove and 0 not upgraded.
+Need to get 40.5 MB of archives.
+After this operation, 117 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libasan0 amd64 4.8.4-2ubuntu1~14.04.3 [63.1 kB]
+
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libatomic1 amd64 4.8.4-2ubuntu1~14.04.3 [8636 B]
+
+Get:3 http://archive.ubuntu.com/ubuntu/ trusty/main libgmp10 amd64 2:5.1.3+dfsg-1ubuntu1 [218 kB]
+
+Get:4 http://archive.ubuntu.com/ubuntu/ trusty/main libisl10 amd64 0.12.2-1 [419 kB]
+
+Get:5 http://archive.ubuntu.com/ubuntu/ trusty/main libcloog-isl4 amd64 0.18.2-1 [57.5 kB]
+
+Get:6 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libgomp1 amd64 4.8.4-2ubuntu1~14.04.3 [23.1 kB]
+
+Get:7 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libitm1 amd64 4.8.4-2ubuntu1~14.04.3 [28.5 kB]
+
+Get:8 http://archive.ubuntu.com/ubuntu/ trusty/main libmpfr4 amd64 3.1.2-1 [203 kB]
+
+Get:9 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libquadmath0 amd64 4.8.4-2ubuntu1~14.04.3 [126 kB]
+
+Get:10 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libtsan0 amd64 4.8.4-2ubuntu1~14.04.3 [94.9 kB]
+
+Get:11 http://archive.ubuntu.com/ubuntu/ trusty/main libmpc3 amd64 1.0.1-1ubuntu1 [38.4 kB]
+
+Get:12 http://archive.ubuntu.com/ubuntu/ trusty/main manpages all 3.54-1ubuntu1 [627 kB]
+
+Get:13 http://archive.ubuntu.com/ubuntu/ trusty-updates/main binutils amd64 2.24-5ubuntu14.1 [2081 kB]
+
+Get:14 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libc-dev-bin amd64 2.19-0ubuntu6.11 [69.0 kB]
+
+Get:15 http://archive.ubuntu.com/ubuntu/ trusty-updates/main linux-libc-dev amd64 3.13.0-116.163 [767 kB]
+
+Get:16 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libc6-dev amd64 2.19-0ubuntu6.11 [1912 kB]
+
+Get:17 http://archive.ubuntu.com/ubuntu/ trusty-updates/main cpp-4.8 amd64 4.8.4-2ubuntu1~14.04.3 [4595 kB]
+
+Get:18 http://archive.ubuntu.com/ubuntu/ trusty/main cpp amd64 4:4.8.2-1ubuntu6 [27.5 kB]
+
+Get:19 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libgcc-4.8-dev amd64 4.8.4-2ubuntu1~14.04.3 [1688 kB]
+
+Get:20 http://archive.ubuntu.com/ubuntu/ trusty-updates/main gcc-4.8 amd64 4.8.4-2ubuntu1~14.04.3 [5047 kB]
+
+Get:21 http://archive.ubuntu.com/ubuntu/ trusty/main gcc amd64 4:4.8.2-1ubuntu6 [5098 B]
+
+Get:22 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libstdc++-4.8-dev amd64 4.8.4-2ubuntu1~14.04.3 [1053 kB]
+
+Get:23 http://archive.ubuntu.com/ubuntu/ trusty-updates/main g++-4.8 amd64 4.8.4-2ubuntu1~14.04.3 [18.1 MB]
+
+Get:24 http://archive.ubuntu.com/ubuntu/ trusty/main g++ amd64 4:4.8.2-1ubuntu6 [1490 B]
+
+Get:25 http://archive.ubuntu.com/ubuntu/ trusty/main make amd64 3.81-8.2ubuntu3 [119 kB]
+
+Get:26 http://archive.ubuntu.com/ubuntu/ trusty/main libtimedate-perl all 2.3000-1 [37.2 kB]
+
+Get:27 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libdpkg-perl all 1.17.5ubuntu5.7 [179 kB]
+
+Get:28 http://archive.ubuntu.com/ubuntu/ trusty/main xz-utils amd64 5.1.1alpha+20120614-2ubuntu2 [78.8 kB]
+
+Get:29 http://archive.ubuntu.com/ubuntu/ trusty-updates/main patch amd64 2.7.1-4ubuntu2.3 [86.4 kB]
+
+Get:30 http://archive.ubuntu.com/ubuntu/ trusty-updates/main dpkg-dev all 1.17.5ubuntu5.7 [726 kB]
+
+Get:31 http://archive.ubuntu.com/ubuntu/ trusty/main build-essential amd64 11.6ubuntu6 [4838 B]
+
+Get:32 http://archive.ubuntu.com/ubuntu/ trusty/main libfakeroot amd64 1.20-3ubuntu2 [25.4 kB]
+
+Get:33 http://archive.ubuntu.com/ubuntu/ trusty/main fakeroot amd64 1.20-3ubuntu2 [55.0 kB]
+
+Get:34 http://archive.ubuntu.com/ubuntu/ trusty/main libalgorithm-diff-perl all 1.19.02-3 [50.0 kB]
+
+Get:35 http://archive.ubuntu.com/ubuntu/ trusty/main libalgorithm-diff-xs-perl amd64 0.04-2build4 [12.6 kB]
+
+Get:36 http://archive.ubuntu.com/ubuntu/ trusty/main libalgorithm-merge-perl all 0.08-2 [12.7 kB]
+
+Get:37 http://archive.ubuntu.com/ubuntu/ trusty/main libfile-fcntllock-perl amd64 0.14-2build1 [15.9 kB]
+
+Get:38 http://archive.ubuntu.com/ubuntu/ trusty/main manpages-dev all 3.54-1ubuntu1 [1820 kB]
+
+[91mdebconf: unable to initialize frontend: Dialog
+[0m
+[91mdebconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+[0m
+[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+[0m
+[91mdpkg-preconfigure: unable to re-open stdin: 
+[0m
+Fetched 40.5 MB in 5s (7324 kB/s)
+
+Selecting previously unselected package libasan0:amd64.
+
+(Reading database ... 11569 files and directories currently installed.)
+
+Preparing to unpack .../libasan0_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libasan0:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package libatomic1:amd64.
+
+Preparing to unpack .../libatomic1_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libatomic1:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package libgmp10:amd64.
+
+Preparing to unpack .../libgmp10_2%3a5.1.3+dfsg-1ubuntu1_amd64.deb ...
+
+Unpacking libgmp10:amd64 (2:5.1.3+dfsg-1ubuntu1) ...
+
+Selecting previously unselected package libisl10:amd64.
+Preparing to unpack .../libisl10_0.12.2-1_amd64.deb ...
+
+Unpacking libisl10:amd64 (0.12.2-1) ...
+
+Selecting previously unselected package libcloog-isl4:amd64.
+
+Preparing to unpack .../libcloog-isl4_0.18.2-1_amd64.deb ...
+
+Unpacking libcloog-isl4:amd64 (0.18.2-1) ...
+
+Selecting previously unselected package libgomp1:amd64.
+
+Preparing to unpack .../libgomp1_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libgomp1:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package libitm1:amd64.
+
+Preparing to unpack .../libitm1_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libitm1:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package libmpfr4:amd64.
+
+Preparing to unpack .../libmpfr4_3.1.2-1_amd64.deb ...
+
+Unpacking libmpfr4:amd64 (3.1.2-1) ...
+
+Selecting previously unselected package libquadmath0:amd64.
+
+Preparing to unpack .../libquadmath0_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libquadmath0:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package libtsan0:amd64.
+
+Preparing to unpack .../libtsan0_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libtsan0:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package libmpc3:amd64.
+
+Preparing to unpack .../libmpc3_1.0.1-1ubuntu1_amd64.deb ...
+
+Unpacking libmpc3:amd64 (1.0.1-1ubuntu1) ...
+
+Selecting previously unselected package manpages.
+
+Preparing to unpack .../manpages_3.54-1ubuntu1_all.deb ...
+
+Unpacking manpages (3.54-1ubuntu1) ...
+
+Selecting previously unselected package binutils.
+Preparing to unpack .../binutils_2.24-5ubuntu14.1_amd64.deb ...
+
+Unpacking binutils (2.24-5ubuntu14.1) ...
+
+Selecting previously unselected package libc-dev-bin.
+
+Preparing to unpack .../libc-dev-bin_2.19-0ubuntu6.11_amd64.deb ...
+
+Unpacking libc-dev-bin (2.19-0ubuntu6.11) ...
+
+Selecting previously unselected package linux-libc-dev:amd64.
+
+Preparing to unpack .../linux-libc-dev_3.13.0-116.163_amd64.deb ...
+
+Unpacking linux-libc-dev:amd64 (3.13.0-116.163) ...
+
+Selecting previously unselected package libc6-dev:amd64.
+
+Preparing to unpack .../libc6-dev_2.19-0ubuntu6.11_amd64.deb ...
+
+Unpacking libc6-dev:amd64 (2.19-0ubuntu6.11) ...
+
+Selecting previously unselected package cpp-4.8.
+
+Preparing to unpack .../cpp-4.8_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking cpp-4.8 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package cpp.
+
+Preparing to unpack .../cpp_4%3a4.8.2-1ubuntu6_amd64.deb ...
+
+Unpacking cpp (4:4.8.2-1ubuntu6) ...
+
+Selecting previously unselected package libgcc-4.8-dev:amd64.
+
+Preparing to unpack .../libgcc-4.8-dev_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libgcc-4.8-dev:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package gcc-4.8.
+
+Preparing to unpack .../gcc-4.8_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking gcc-4.8 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package gcc.
+
+Preparing to unpack .../gcc_4%3a4.8.2-1ubuntu6_amd64.deb ...
+
+Unpacking gcc (4:4.8.2-1ubuntu6) ...
+
+Selecting previously unselected package libstdc++-4.8-dev:amd64.
+
+Preparing to unpack .../libstdc++-4.8-dev_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking libstdc++-4.8-dev:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package g++-4.8.
+
+Preparing to unpack .../g++-4.8_4.8.4-2ubuntu1~14.04.3_amd64.deb ...
+
+Unpacking g++-4.8 (4.8.4-2ubuntu1~14.04.3) ...
+
+Selecting previously unselected package g++.
+
+Preparing to unpack .../g++_4%3a4.8.2-1ubuntu6_amd64.deb ...
+
+Unpacking g++ (4:4.8.2-1ubuntu6) ...
+
+Selecting previously unselected package make.
+
+Preparing to unpack .../make_3.81-8.2ubuntu3_amd64.deb ...
+
+Unpacking make (3.81-8.2ubuntu3) ...
+
+Selecting previously unselected package libtimedate-perl.
+
+Preparing to unpack .../libtimedate-perl_2.3000-1_all.deb ...
+
+Unpacking libtimedate-perl (2.3000-1) ...
+
+Selecting previously unselected package libdpkg-perl.
+Preparing to unpack .../libdpkg-perl_1.17.5ubuntu5.7_all.deb ...
+
+Unpacking libdpkg-perl (1.17.5ubuntu5.7) ...
+
+Selecting previously unselected package xz-utils.
+
+Preparing to unpack .../xz-utils_5.1.1alpha+20120614-2ubuntu2_amd64.deb ...
+
+Unpacking xz-utils (5.1.1alpha+20120614-2ubuntu2) ...
+
+Selecting previously unselected package patch.
+
+Preparing to unpack .../patch_2.7.1-4ubuntu2.3_amd64.deb ...
+
+Unpacking patch (2.7.1-4ubuntu2.3) ...
+
+Selecting previously unselected package dpkg-dev.
+Preparing to unpack .../dpkg-dev_1.17.5ubuntu5.7_all.deb ...
+
+Unpacking dpkg-dev (1.17.5ubuntu5.7) ...
+
+Selecting previously unselected package build-essential.
+
+Preparing to unpack .../build-essential_11.6ubuntu6_amd64.deb ...
+
+Unpacking build-essential (11.6ubuntu6) ...
+
+Selecting previously unselected package libfakeroot:amd64.
+
+Preparing to unpack .../libfakeroot_1.20-3ubuntu2_amd64.deb ...
+
+Unpacking libfakeroot:amd64 (1.20-3ubuntu2) ...
+
+Selecting previously unselected package fakeroot.
+
+Preparing to unpack .../fakeroot_1.20-3ubuntu2_amd64.deb ...
+
+Unpacking fakeroot (1.20-3ubuntu2) ...
+
+Selecting previously unselected package libalgorithm-diff-perl.
+
+Preparing to unpack .../libalgorithm-diff-perl_1.19.02-3_all.deb ...
+
+Unpacking libalgorithm-diff-perl (1.19.02-3) ...
+
+Selecting previously unselected package libalgorithm-diff-xs-perl.
+
+Preparing to unpack .../libalgorithm-diff-xs-perl_0.04-2build4_amd64.deb ...
+
+Unpacking libalgorithm-diff-xs-perl (0.04-2build4) ...
+
+Selecting previously unselected package libalgorithm-merge-perl.
+
+Preparing to unpack .../libalgorithm-merge-perl_0.08-2_all.deb ...
+
+Unpacking libalgorithm-merge-perl (0.08-2) ...
+
+Selecting previously unselected package libfile-fcntllock-perl.
+
+Preparing to unpack .../libfile-fcntllock-perl_0.14-2build1_amd64.deb ...
+
+Unpacking libfile-fcntllock-perl (0.14-2build1) ...
+
+Selecting previously unselected package manpages-dev.
+
+Preparing to unpack .../manpages-dev_3.54-1ubuntu1_all.deb ...
+
+Unpacking manpages-dev (3.54-1ubuntu1) ...
+
+Setting up libasan0:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up libatomic1:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up libgmp10:amd64 (2:5.1.3+dfsg-1ubuntu1) ...
+
+Setting up libisl10:amd64 (0.12.2-1) ...
+
+Setting up libcloog-isl4:amd64 (0.18.2-1) ...
+
+Setting up libgomp1:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up libitm1:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up libmpfr4:amd64 (3.1.2-1) ...
+
+Setting up libquadmath0:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up libtsan0:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up libmpc3:amd64 (1.0.1-1ubuntu1) ...
+
+Setting up manpages (3.54-1ubuntu1) ...
+
+Setting up binutils (2.24-5ubuntu14.1) ...
+
+Setting up libc-dev-bin (2.19-0ubuntu6.11) ...
+
+Setting up linux-libc-dev:amd64 (3.13.0-116.163) ...
+
+Setting up libc6-dev:amd64 (2.19-0ubuntu6.11) ...
+
+Setting up cpp-4.8 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up cpp (4:4.8.2-1ubuntu6) ...
+
+Setting up libgcc-4.8-dev:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up gcc-4.8 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up gcc (4:4.8.2-1ubuntu6) ...
+
+Setting up libstdc++-4.8-dev:amd64 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up g++-4.8 (4.8.4-2ubuntu1~14.04.3) ...
+
+Setting up g++ (4:4.8.2-1ubuntu6) ...
+
+update-alternatives: using /usr/bin/g++ to provide /usr/bin/c++ (c++) in auto mode
+
+Setting up make (3.81-8.2ubuntu3) ...
+
+Setting up libtimedate-perl (2.3000-1) ...
+
+Setting up libdpkg-perl (1.17.5ubuntu5.7) ...
+
+Setting up xz-utils (5.1.1alpha+20120614-2ubuntu2) ...
+
+update-alternatives: using /usr/bin/xz to provide /usr/bin/lzma (lzma) in auto mode
+
+Setting up patch (2.7.1-4ubuntu2.3) ...
+
+Setting up dpkg-dev (1.17.5ubuntu5.7) ...
+
+Setting up build-essential (11.6ubuntu6) ...
+
+Setting up libfakeroot:amd64 (1.20-3ubuntu2) ...
+
+Setting up fakeroot (1.20-3ubuntu2) ...
+
+update-alternatives: using /usr/bin/fakeroot-sysv to provide /usr/bin/fakeroot (fakeroot) in auto mode
+
+Setting up libalgorithm-diff-perl (1.19.02-3) ...
+
+Setting up libalgorithm-diff-xs-perl (0.04-2build4) ...
+
+Setting up libalgorithm-merge-perl (0.08-2) ...
+
+Setting up libfile-fcntllock-perl (0.14-2build1) ...
+
+Setting up manpages-dev (3.54-1ubuntu1) ...
+
+Processing triggers for libc-bin (2.19-0ubuntu6.11) ...
+
+ ---> 2e0ac6615e79
+
+Removing intermediate container 46211ad38b7e
+
+Step 4/10 : RUN apt-get -y install git
+
+ ---> Running in bff78dee8449
+
+Reading package lists...
+
+
+Building dependency tree...
+
+Reading state information...
+
+The following extra packages will be installed:
+  ca-certificates git-man krb5-locales libasn1-8-heimdal libcurl3-gnutls
+  libedit2 liberror-perl libgssapi-krb5-2 libgssapi3-heimdal
+  libhcrypto4-heimdal libheimbase1-heimdal libheimntlm0-heimdal
+  libhx509-5-heimdal libidn11 libk5crypto3 libkeyutils1 libkrb5-26-heimdal
+  libkrb5-3 libkrb5support0 libldap-2.4-2 libroken18-heimdal librtmp0
+  libsasl2-2 libsasl2-modules libsasl2-modules-db libwind0-heimdal libx11-6
+  libx11-data libxau6 libxcb1 libxdmcp6 libxext6 libxmuu1 openssh-client
+  openssl rsync xauth
+
+Suggested packages:
+  gettext-base git-daemon-run git-daemon-sysvinit git-doc git-el git-email
+  git-gui gitk gitweb git-arch git-bzr git-cvs git-mediawiki git-svn krb5-doc
+  krb5-user libsasl2-modules-otp libsasl2-modules-ldap libsasl2-modules-sql
+  libsasl2-modules-gssapi-mit libsasl2-modules-gssapi-heimdal ssh-askpass
+  libpam-ssh keychain monkeysphere openssh-server
+Recommended packages:
+  ssh-client
+
+The following NEW packages will be installed:
+  ca-certificates git git-man krb5-locales libasn1-8-heimdal libcurl3-gnutls
+  libedit2 liberror-perl libgssapi-krb5-2 libgssapi3-heimdal
+  libhcrypto4-heimdal libheimbase1-heimdal libheimntlm0-heimdal
+  libhx509-5-heimdal libidn11 libk5crypto3 libkeyutils1 libkrb5-26-heimdal
+  libkrb5-3 libkrb5support0 libldap-2.4-2 libroken18-heimdal librtmp0
+  libsasl2-2 libsasl2-modules libsasl2-modules-db libwind0-heimdal libx11-6
+  libx11-data libxau6 libxcb1 libxdmcp6 libxext6 libxmuu1 openssh-client
+  openssl rsync xauth
+
+0 upgraded, 38 newly installed, 0 to remove and 0 not upgraded.
+Need to get 7353 kB of archives.
+After this operation, 41.3 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libroken18-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [40.0 kB]
+
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libasn1-8-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [161 kB]
+
+Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libkrb5support0 amd64 1.12+dfsg-2ubuntu5.3 [30.7 kB]
+
+Get:4 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libk5crypto3 amd64 1.12+dfsg-2ubuntu5.3 [79.6 kB]
+
+Get:5 http://archive.ubuntu.com/ubuntu/ trusty/main libkeyutils1 amd64 1.5.6-1 [7318 B]
+
+Get:6 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libkrb5-3 amd64 1.12+dfsg-2ubuntu5.3 [262 kB]
+
+Get:7 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libgssapi-krb5-2 amd64 1.12+dfsg-2ubuntu5.3 [114 kB]
+
+Get:8 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libidn11 amd64 1.28-1ubuntu2.1 [94.4 kB]
+
+Get:9 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libhcrypto4-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [83.9 kB]
+
+Get:10 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libheimbase1-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [28.9 kB]
+
+Get:11 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libwind0-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [47.8 kB]
+
+Get:12 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libhx509-5-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [104 kB]
+
+Get:13 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libkrb5-26-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [196 kB]
+
+Get:14 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libheimntlm0-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [15.2 kB]
+
+Get:15 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libgssapi3-heimdal amd64 1.6~git20131207+dfsg-1ubuntu1.1 [89.8 kB]
+
+Get:16 http://archive.ubuntu.com/ubuntu/ trusty/main libsasl2-modules-db amd64 2.1.25.dfsg1-17build1 [14.9 kB]
+
+Get:17 http://archive.ubuntu.com/ubuntu/ trusty/main libsasl2-2 amd64 2.1.25.dfsg1-17build1 [56.5 kB]
+
+Get:18 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libldap-2.4-2 amd64 2.4.31-1+nmu2ubuntu8.3 [153 kB]
+
+Get:19 http://archive.ubuntu.com/ubuntu/ trusty/main librtmp0 amd64 2.4+20121230.gitdf6c518-1 [57.5 kB]
+
+Get:20 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libcurl3-gnutls amd64 7.35.0-1ubuntu2.10 [166 kB]
+
+Get:21 http://archive.ubuntu.com/ubuntu/ trusty/main libedit2 amd64 3.1-20130712-2 [86.7 kB]
+
+Get:22 http://archive.ubuntu.com/ubuntu/ trusty/main libxau6 amd64 1:1.0.8-1 [8376 B]
+
+Get:23 http://archive.ubuntu.com/ubuntu/ trusty/main libxdmcp6 amd64 1:1.1.1-1 [12.8 kB]
+
+Get:24 http://archive.ubuntu.com/ubuntu/ trusty/main libxcb1 amd64 1.10-2ubuntu1 [38.0 kB]
+
+Get:25 http://archive.ubuntu.com/ubuntu/ trusty/main libx11-data all 2:1.6.2-1ubuntu2 [111 kB]
+
+Get:26 http://archive.ubuntu.com/ubuntu/ trusty/main libx11-6 amd64 2:1.6.2-1ubuntu2 [560 kB]
+
+Get:27 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libxext6 amd64 2:1.3.2-1ubuntu0.0.14.04.1 [28.8 kB]
+
+Get:28 http://archive.ubuntu.com/ubuntu/ trusty/main libxmuu1 amd64 2:1.1.1-1 [11.0 kB]
+
+Get:29 http://archive.ubuntu.com/ubuntu/ trusty-updates/main openssl amd64 1.0.1f-1ubuntu2.22 [489 kB]
+
+Get:30 http://archive.ubuntu.com/ubuntu/ trusty-updates/main ca-certificates all 20160104ubuntu0.14.04.1 [190 kB]
+
+Get:31 http://archive.ubuntu.com/ubuntu/ trusty-updates/main krb5-locales all 1.12+dfsg-2ubuntu5.3 [13.5 kB]
+
+Get:32 http://archive.ubuntu.com/ubuntu/ trusty/main libsasl2-modules amd64 2.1.25.dfsg1-17build1 [64.3 kB]
+
+Get:33 http://archive.ubuntu.com/ubuntu/ trusty-updates/main openssh-client amd64 1:6.6p1-2ubuntu2.8 [564 kB]
+
+Get:34 http://archive.ubuntu.com/ubuntu/ trusty-updates/main rsync amd64 3.1.0-2ubuntu0.2 [284 kB]
+
+Get:35 http://archive.ubuntu.com/ubuntu/ trusty/main xauth amd64 1:1.0.7-1ubuntu1 [25.8 kB]
+
+Get:36 http://archive.ubuntu.com/ubuntu/ trusty/main liberror-perl all 0.17-1.1 [21.1 kB]
+
+Get:37 http://archive.ubuntu.com/ubuntu/ trusty-updates/main git-man all 1:1.9.1-1ubuntu0.4 [699 kB]
+
+Get:38 http://archive.ubuntu.com/ubuntu/ trusty-updates/main git amd64 1:1.9.1-1ubuntu0.4 [2343 kB]
+
+[91mdebconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+[0m
+[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+[0m
+Fetched 7353 kB in 4s (1834 kB/s)
+
+Selecting previously unselected package libroken18-heimdal:amd64.
+
+(Reading database ... 16753 files and directories currently installed.)
+Preparing to unpack .../libroken18-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libroken18-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libasn1-8-heimdal:amd64.
+
+Preparing to unpack .../libasn1-8-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libasn1-8-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libkrb5support0:amd64.
+
+Preparing to unpack .../libkrb5support0_1.12+dfsg-2ubuntu5.3_amd64.deb ...
+
+Unpacking libkrb5support0:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Selecting previously unselected package libk5crypto3:amd64.
+
+Preparing to unpack .../libk5crypto3_1.12+dfsg-2ubuntu5.3_amd64.deb ...
+
+Unpacking libk5crypto3:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Selecting previously unselected package libkeyutils1:amd64.
+
+Preparing to unpack .../libkeyutils1_1.5.6-1_amd64.deb ...
+
+Unpacking libkeyutils1:amd64 (1.5.6-1) ...
+
+Selecting previously unselected package libkrb5-3:amd64.
+
+Preparing to unpack .../libkrb5-3_1.12+dfsg-2ubuntu5.3_amd64.deb ...
+
+Unpacking libkrb5-3:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Selecting previously unselected package libgssapi-krb5-2:amd64.
+Preparing to unpack .../libgssapi-krb5-2_1.12+dfsg-2ubuntu5.3_amd64.deb ...
+
+Unpacking libgssapi-krb5-2:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Selecting previously unselected package libidn11:amd64.
+Preparing to unpack .../libidn11_1.28-1ubuntu2.1_amd64.deb ...
+
+Unpacking libidn11:amd64 (1.28-1ubuntu2.1) ...
+
+Selecting previously unselected package libhcrypto4-heimdal:amd64.
+Preparing to unpack .../libhcrypto4-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libhcrypto4-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libheimbase1-heimdal:amd64.
+Preparing to unpack .../libheimbase1-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libheimbase1-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libwind0-heimdal:amd64.
+Preparing to unpack .../libwind0-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libwind0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libhx509-5-heimdal:amd64.
+Preparing to unpack .../libhx509-5-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libhx509-5-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libkrb5-26-heimdal:amd64.
+Preparing to unpack .../libkrb5-26-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libkrb5-26-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libheimntlm0-heimdal:amd64.
+Preparing to unpack .../libheimntlm0-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libheimntlm0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libgssapi3-heimdal:amd64.
+Preparing to unpack .../libgssapi3-heimdal_1.6~git20131207+dfsg-1ubuntu1.1_amd64.deb ...
+
+Unpacking libgssapi3-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Selecting previously unselected package libsasl2-modules-db:amd64.
+Preparing to unpack .../libsasl2-modules-db_2.1.25.dfsg1-17build1_amd64.deb ...
+
+Unpacking libsasl2-modules-db:amd64 (2.1.25.dfsg1-17build1) ...
+
+Selecting previously unselected package libsasl2-2:amd64.
+Preparing to unpack .../libsasl2-2_2.1.25.dfsg1-17build1_amd64.deb ...
+
+Unpacking libsasl2-2:amd64 (2.1.25.dfsg1-17build1) ...
+
+Selecting previously unselected package libldap-2.4-2:amd64.
+
+Preparing to unpack .../libldap-2.4-2_2.4.31-1+nmu2ubuntu8.3_amd64.deb ...
+
+Unpacking libldap-2.4-2:amd64 (2.4.31-1+nmu2ubuntu8.3) ...
+
+Selecting previously unselected package librtmp0:amd64.
+Preparing to unpack .../librtmp0_2.4+20121230.gitdf6c518-1_amd64.deb ...
+
+Unpacking librtmp0:amd64 (2.4+20121230.gitdf6c518-1) ...
+
+Selecting previously unselected package libcurl3-gnutls:amd64.
+Preparing to unpack .../libcurl3-gnutls_7.35.0-1ubuntu2.10_amd64.deb ...
+
+Unpacking libcurl3-gnutls:amd64 (7.35.0-1ubuntu2.10) ...
+
+Selecting previously unselected package libedit2:amd64.
+Preparing to unpack .../libedit2_3.1-20130712-2_amd64.deb ...
+
+Unpacking libedit2:amd64 (3.1-20130712-2) ...
+
+Selecting previously unselected package libxau6:amd64.
+Preparing to unpack .../libxau6_1%3a1.0.8-1_amd64.deb ...
+
+Unpacking libxau6:amd64 (1:1.0.8-1) ...
+
+Selecting previously unselected package libxdmcp6:amd64.
+
+Preparing to unpack .../libxdmcp6_1%3a1.1.1-1_amd64.deb ...
+
+Unpacking libxdmcp6:amd64 (1:1.1.1-1) ...
+
+Selecting previously unselected package libxcb1:amd64.
+Preparing to unpack .../libxcb1_1.10-2ubuntu1_amd64.deb ...
+
+Unpacking libxcb1:amd64 (1.10-2ubuntu1) ...
+
+Selecting previously unselected package libx11-data.
+Preparing to unpack .../libx11-data_2%3a1.6.2-1ubuntu2_all.deb ...
+
+Unpacking libx11-data (2:1.6.2-1ubuntu2) ...
+
+Selecting previously unselected package libx11-6:amd64.
+
+Preparing to unpack .../libx11-6_2%3a1.6.2-1ubuntu2_amd64.deb ...
+
+Unpacking libx11-6:amd64 (2:1.6.2-1ubuntu2) ...
+
+Selecting previously unselected package libxext6:amd64.
+
+Preparing to unpack .../libxext6_2%3a1.3.2-1ubuntu0.0.14.04.1_amd64.deb ...
+
+Unpacking libxext6:amd64 (2:1.3.2-1ubuntu0.0.14.04.1) ...
+
+Selecting previously unselected package libxmuu1:amd64.
+Preparing to unpack .../libxmuu1_2%3a1.1.1-1_amd64.deb ...
+
+Unpacking libxmuu1:amd64 (2:1.1.1-1) ...
+
+Selecting previously unselected package openssl.
+Preparing to unpack .../openssl_1.0.1f-1ubuntu2.22_amd64.deb ...
+
+Unpacking openssl (1.0.1f-1ubuntu2.22) ...
+
+Selecting previously unselected package ca-certificates.
+Preparing to unpack .../ca-certificates_20160104ubuntu0.14.04.1_all.deb ...
+
+Unpacking ca-certificates (20160104ubuntu0.14.04.1) ...
+
+Selecting previously unselected package krb5-locales.
+Preparing to unpack .../krb5-locales_1.12+dfsg-2ubuntu5.3_all.deb ...
+
+Unpacking krb5-locales (1.12+dfsg-2ubuntu5.3) ...
+
+Selecting previously unselected package libsasl2-modules:amd64.
+
+Preparing to unpack .../libsasl2-modules_2.1.25.dfsg1-17build1_amd64.deb ...
+
+Unpacking libsasl2-modules:amd64 (2.1.25.dfsg1-17build1) ...
+
+Selecting previously unselected package openssh-client.
+Preparing to unpack .../openssh-client_1%3a6.6p1-2ubuntu2.8_amd64.deb ...
+
+Unpacking openssh-client (1:6.6p1-2ubuntu2.8) ...
+
+Selecting previously unselected package rsync.
+Preparing to unpack .../rsync_3.1.0-2ubuntu0.2_amd64.deb ...
+
+Unpacking rsync (3.1.0-2ubuntu0.2) ...
+
+Selecting previously unselected package xauth.
+Preparing to unpack .../xauth_1%3a1.0.7-1ubuntu1_amd64.deb ...
+
+Unpacking xauth (1:1.0.7-1ubuntu1) ...
+
+Selecting previously unselected package liberror-perl.
+Preparing to unpack .../liberror-perl_0.17-1.1_all.deb ...
+
+Unpacking liberror-perl (0.17-1.1) ...
+
+Selecting previously unselected package git-man.
+Preparing to unpack .../git-man_1%3a1.9.1-1ubuntu0.4_all.deb ...
+
+Unpacking git-man (1:1.9.1-1ubuntu0.4) ...
+
+Selecting previously unselected package git.
+Preparing to unpack .../git_1%3a1.9.1-1ubuntu0.4_amd64.deb ...
+
+Unpacking git (1:1.9.1-1ubuntu0.4) ...
+
+Processing triggers for ureadahead (0.100.0-16) ...
+
+Setting up libroken18-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libasn1-8-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libkrb5support0:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Setting up libk5crypto3:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Setting up libkeyutils1:amd64 (1.5.6-1) ...
+
+Setting up libkrb5-3:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Setting up libgssapi-krb5-2:amd64 (1.12+dfsg-2ubuntu5.3) ...
+
+Setting up libidn11:amd64 (1.28-1ubuntu2.1) ...
+
+Setting up libhcrypto4-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libheimbase1-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libwind0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libhx509-5-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libkrb5-26-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libheimntlm0-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libgssapi3-heimdal:amd64 (1.6~git20131207+dfsg-1ubuntu1.1) ...
+
+Setting up libsasl2-modules-db:amd64 (2.1.25.dfsg1-17build1) ...
+
+Setting up libsasl2-2:amd64 (2.1.25.dfsg1-17build1) ...
+
+Setting up libldap-2.4-2:amd64 (2.4.31-1+nmu2ubuntu8.3) ...
+
+Setting up librtmp0:amd64 (2.4+20121230.gitdf6c518-1) ...
+
+Setting up libcurl3-gnutls:amd64 (7.35.0-1ubuntu2.10) ...
+
+Setting up libedit2:amd64 (3.1-20130712-2) ...
+
+Setting up libxau6:amd64 (1:1.0.8-1) ...
+
+Setting up libxdmcp6:amd64 (1:1.1.1-1) ...
+
+Setting up libxcb1:amd64 (1.10-2ubuntu1) ...
+
+Setting up libx11-data (2:1.6.2-1ubuntu2) ...
+
+Setting up libx11-6:amd64 (2:1.6.2-1ubuntu2) ...
+
+Setting up libxext6:amd64 (2:1.3.2-1ubuntu0.0.14.04.1) ...
+
+Setting up libxmuu1:amd64 (2:1.1.1-1) ...
+
+Setting up openssl (1.0.1f-1ubuntu2.22) ...
+
+Setting up ca-certificates (20160104ubuntu0.14.04.1) ...
+
+[91mdebconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+[0m
+[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+[0m
+Setting up krb5-locales (1.12+dfsg-2ubuntu5.3) ...
+
+Setting up libsasl2-modules:amd64 (2.1.25.dfsg1-17build1) ...
+
+Setting up openssh-client (1:6.6p1-2ubuntu2.8) ...
+
+Setting up rsync (3.1.0-2ubuntu0.2) ...
+
+ Removing any system startup links for /etc/init.d/rsync ...
+
+[91mupdate-rc.d: warning: default stop runlevel arguments (0 1 6) do not match rsync Default-Stop values (none)
+[0m
+ Adding system startup for /etc/init.d/rsync ...
+   /etc/rc0.d/K20rsync -> ../init.d/rsync
+   /etc/rc1.d/K20rsync -> ../init.d/rsync
+   /etc/rc6.d/K20rsync -> ../init.d/rsync
+   /etc/rc2.d/S20rsync -> ../init.d/rsync
+   /etc/rc3.d/S20rsync -> ../init.d/rsync
+   /etc/rc4.d/S20rsync -> ../init.d/rsync
+   /etc/rc5.d/S20rsync -> ../init.d/rsync
+
+[91minvoke-rc.d: policy-rc.d denied execution of restart.
+[0m
+Setting up xauth (1:1.0.7-1ubuntu1) ...
+
+Setting up liberror-perl (0.17-1.1) ...
+
+Setting up git-man (1:1.9.1-1ubuntu0.4) ...
+
+Setting up git (1:1.9.1-1ubuntu0.4) ...
+
+Processing triggers for libc-bin (2.19-0ubuntu6.11) ...
+
+Processing triggers for ca-certificates (20160104ubuntu0.14.04.1) ...
+
+Updating certificates in /etc/ssl/certs... 
+173 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d....
+done.
+
+Processing triggers for ureadahead (0.100.0-16) ...
+
+ ---> 1b72698b893c
+
+Removing intermediate container bff78dee8449
+
+Step 5/10 : RUN git clone https://553bd177d76215c8ed19a1c9c7789965394abcb0:x-oauth-basic@github.com/chrisrauch193/CS2006Practical3.git
+
+ ---> Running in 48b286bd425c
+
+[91mCloning into 'CS2006Practical3'...
+[0m
+ ---> a10ce387ce8e
+
+Removing intermediate container 48b286bd425c
+
+Step 6/10 : RUN xargs -a CS2006Practical3/Dependencies/apt-packages.txt apt-get install -y
+
+ ---> Running in 3fbd48864df8
+
+Reading package lists...
+
+
+Building dependency tree...
+
+Reading state information...
+
+python3 is already the newest version.
+git is already the newest version.
+The following extra packages will be installed:
+  libexpat1-dev libpython-dev libpython-stdlib libpython2.7 libpython2.7-dev
+  libpython2.7-minimal libpython2.7-stdlib libpython3-dev libpython3.4
+  libpython3.4-dev python-chardet python-chardet-whl python-colorama
+  python-colorama-whl python-distlib python-distlib-whl python-html5lib
+  python-html5lib-whl python-minimal python-pip-whl python-pkg-resources
+  python-requests python-requests-whl python-setuptools python-setuptools-whl
+  python-six python-six-whl python-urllib3 python-urllib3-whl python-wheel
+  python2.7 python2.7-dev python2.7-minimal python3-chardet python3-colorama
+  python3-distlib python3-html5lib python3-pkg-resources python3-requests
+  python3-setuptools python3-six python3-urllib3 python3-wheel python3.4-dev
+Suggested packages:
+  python-doc python-tk python-genshi python-lxml python-distribute
+  python-distribute-doc python2.7-doc binfmt-support python3-genshi
+  python3-lxml
+Recommended packages:
+  python-dev-all
+The following NEW packages will be installed:
+  libexpat1-dev libpython-dev libpython-stdlib libpython2.7 libpython2.7-dev
+  libpython2.7-minimal libpython2.7-stdlib libpython3-dev libpython3.4
+  libpython3.4-dev python python-chardet python-chardet-whl python-colorama
+  python-colorama-whl python-dev python-distlib python-distlib-whl
+  python-html5lib python-html5lib-whl python-minimal python-pip python-pip-whl
+  python-pkg-resources python-requests python-requests-whl python-setuptools
+  python-setuptools-whl python-six python-six-whl python-urllib3
+  python-urllib3-whl python-wheel python2.7 python2.7-dev python2.7-minimal
+  python3-chardet python3-colorama python3-dev python3-distlib
+  python3-html5lib python3-pip python3-pkg-resources python3-requests
+  python3-setuptools python3-six python3-urllib3 python3-wheel python3.4-dev
+
+0 upgraded, 49 newly installed, 0 to remove and 0 not upgraded.
+Need to get 49.3 MB of archives.
+After this operation, 99.0 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libpython2.7-minimal amd64 2.7.6-8ubuntu0.3 [307 kB]
+
+Get:2 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libpython2.7-stdlib amd64 2.7.6-8ubuntu0.3 [1873 kB]
+
+Get:3 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libpython2.7 amd64 2.7.6-8ubuntu0.3 [1039 kB]
+
+Get:4 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libexpat1-dev amd64 2.1.0-4ubuntu1.3 [115 kB]
+
+Get:5 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libpython2.7-dev amd64 2.7.6-8ubuntu0.3 [22.0 MB]
+
+Get:6 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libpython3.4 amd64 3.4.3-1ubuntu1~14.04.5 [1304 kB]
+
+Get:7 http://archive.ubuntu.com/ubuntu/ trusty-updates/main libpython3.4-dev amd64 3.4.3-1ubuntu1~14.04.5 [17.8 MB]
+
+Get:8 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python2.7-minimal amd64 2.7.6-8ubuntu0.3 [1187 kB]
+
+Get:9 http://archive.ubuntu.com/ubuntu/ trusty/main libpython-dev amd64 2.7.5-5ubuntu3 [7078 B]
+
+Get:10 http://archive.ubuntu.com/ubuntu/ trusty/main libpython-stdlib amd64 2.7.5-5ubuntu3 [7012 B]
+
+Get:11 http://archive.ubuntu.com/ubuntu/ trusty/main libpython3-dev amd64 3.4.0-0ubuntu2 [7002 B]
+
+Get:12 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python2.7 amd64 2.7.6-8ubuntu0.3 [197 kB]
+
+Get:13 http://archive.ubuntu.com/ubuntu/ trusty/main python-minimal amd64 2.7.5-5ubuntu3 [27.5 kB]
+
+Get:14 http://archive.ubuntu.com/ubuntu/ trusty/main python amd64 2.7.5-5ubuntu3 [134 kB]
+
+Get:15 http://archive.ubuntu.com/ubuntu/ trusty/main python-chardet all 2.0.1-2build2 [106 kB]
+
+Get:16 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3-pkg-resources all 3.3-1ubuntu2 [31.7 kB]
+
+Get:17 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python-chardet-whl all 2.2.1-2~ubuntu1 [170 kB]
+
+Get:18 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python-colorama all 0.2.5-0.1ubuntu2 [18.4 kB]
+
+Get:19 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python-colorama-whl all 0.2.5-0.1ubuntu2 [18.2 kB]
+
+Get:20 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python2.7-dev amd64 2.7.6-8ubuntu0.3 [269 kB]
+
+Get:21 http://archive.ubuntu.com/ubuntu/ trusty/main python-dev amd64 2.7.5-5ubuntu3 [1166 B]
+
+Get:22 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python-distlib all 0.1.8-1ubuntu1 [113 kB]
+
+Get:23 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python-distlib-whl all 0.1.8-1ubuntu1 [140 kB]
+
+Get:24 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-six all 1.5.2-1ubuntu1 [8238 B]
+
+Get:25 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-html5lib all 0.999-3~ubuntu1 [83.5 kB]
+
+Get:26 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-html5lib-whl all 0.999-3~ubuntu1 [109 kB]
+
+Get:27 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-six-whl all 1.5.2-1ubuntu1 [10.5 kB]
+
+Get:28 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-urllib3-whl all 1.7.1-1ubuntu4 [64.0 kB]
+
+Get:29 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-requests-whl all 2.2.1-1ubuntu0.3 [227 kB]
+
+Get:30 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-setuptools-whl all 3.3-1ubuntu2 [244 kB]
+
+Get:31 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python-pip-whl all 1.5.4-1ubuntu4 [111 kB]
+
+Get:32 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-pkg-resources all 3.3-1ubuntu2 [61.9 kB]
+
+Get:33 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-urllib3 all 1.7.1-1ubuntu4 [39.5 kB]
+
+Get:34 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-requests all 2.2.1-1ubuntu0.3 [43.1 kB]
+
+Get:35 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-setuptools all 3.3-1ubuntu2 [230 kB]
+
+Get:36 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python-pip all 1.5.4-1ubuntu4 [97.3 kB]
+
+Get:37 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python-wheel all 0.24.0-1~ubuntu1 [44.7 kB]
+
+Get:38 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3-chardet all 2.2.1-2~ubuntu1 [96.5 kB]
+
+Get:39 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python3-colorama all 0.2.5-0.1ubuntu2 [12.0 kB]
+
+Get:40 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3.4-dev amd64 3.4.3-1ubuntu1~14.04.5 [419 kB]
+
+Get:41 http://archive.ubuntu.com/ubuntu/ trusty/main python3-dev amd64 3.4.0-0ubuntu2 [1192 B]
+
+Get:42 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python3-distlib all 0.1.8-1ubuntu1 [113 kB]
+
+Get:43 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3-six all 1.5.2-1ubuntu1 [8310 B]
+
+Get:44 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python3-html5lib all 0.999-3~ubuntu1 [79.7 kB]
+
+Get:45 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3-urllib3 all 1.7.1-1ubuntu4 [39.6 kB]
+
+Get:46 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3-requests all 2.2.1-1ubuntu0.3 [43.0 kB]
+
+Get:47 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3-setuptools all 3.3-1ubuntu2 [144 kB]
+
+Get:48 http://archive.ubuntu.com/ubuntu/ trusty-updates/universe python3-pip all 1.5.4-1ubuntu4 [80.3 kB]
+
+Get:49 http://archive.ubuntu.com/ubuntu/ trusty-updates/main python3-wheel all 0.24.0-1~ubuntu1 [44.8 kB]
+
+[91mdebconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+[0m
+[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+dpkg-preconfigure: unable to re-open stdin: 
+[0m
+Fetched 49.3 MB in 7s (6414 kB/s)
+
+Selecting previously unselected package libpython2.7-minimal:amd64.
+
+(Reading database ... 18330 files and directories currently installed.)
+
+Preparing to unpack .../libpython2.7-minimal_2.7.6-8ubuntu0.3_amd64.deb ...
+
+Unpacking libpython2.7-minimal:amd64 (2.7.6-8ubuntu0.3) ...
+
+Selecting previously unselected package libpython2.7-stdlib:amd64.
+
+Preparing to unpack .../libpython2.7-stdlib_2.7.6-8ubuntu0.3_amd64.deb ...
+
+Unpacking libpython2.7-stdlib:amd64 (2.7.6-8ubuntu0.3) ...
+
+Selecting previously unselected package libpython2.7:amd64.
+
+Preparing to unpack .../libpython2.7_2.7.6-8ubuntu0.3_amd64.deb ...
+
+Unpacking libpython2.7:amd64 (2.7.6-8ubuntu0.3) ...
+
+Selecting previously unselected package libexpat1-dev:amd64.
+
+Preparing to unpack .../libexpat1-dev_2.1.0-4ubuntu1.3_amd64.deb ...
+
+Unpacking libexpat1-dev:amd64 (2.1.0-4ubuntu1.3) ...
+
+Selecting previously unselected package libpython2.7-dev:amd64.
+
+Preparing to unpack .../libpython2.7-dev_2.7.6-8ubuntu0.3_amd64.deb ...
+
+Unpacking libpython2.7-dev:amd64 (2.7.6-8ubuntu0.3) ...
+
+Selecting previously unselected package libpython3.4:amd64.
+
+Preparing to unpack .../libpython3.4_3.4.3-1ubuntu1~14.04.5_amd64.deb ...
+
+Unpacking libpython3.4:amd64 (3.4.3-1ubuntu1~14.04.5) ...
+
+Selecting previously unselected package libpython3.4-dev:amd64.
+
+Preparing to unpack .../libpython3.4-dev_3.4.3-1ubuntu1~14.04.5_amd64.deb ...
+
+Unpacking libpython3.4-dev:amd64 (3.4.3-1ubuntu1~14.04.5) ...
+
+Selecting previously unselected package python2.7-minimal.
+
+Preparing to unpack .../python2.7-minimal_2.7.6-8ubuntu0.3_amd64.deb ...
+
+Unpacking python2.7-minimal (2.7.6-8ubuntu0.3) ...
+
+Selecting previously unselected package libpython-dev:amd64.
+
+Preparing to unpack .../libpython-dev_2.7.5-5ubuntu3_amd64.deb ...
+
+Unpacking libpython-dev:amd64 (2.7.5-5ubuntu3) ...
+
+Selecting previously unselected package libpython-stdlib:amd64.
+
+Preparing to unpack .../libpython-stdlib_2.7.5-5ubuntu3_amd64.deb ...
+
+Unpacking libpython-stdlib:amd64 (2.7.5-5ubuntu3) ...
+
+Selecting previously unselected package libpython3-dev:amd64.
+
+Preparing to unpack .../libpython3-dev_3.4.0-0ubuntu2_amd64.deb ...
+
+Unpacking libpython3-dev:amd64 (3.4.0-0ubuntu2) ...
+
+Selecting previously unselected package python2.7.
+
+Preparing to unpack .../python2.7_2.7.6-8ubuntu0.3_amd64.deb ...
+
+Unpacking python2.7 (2.7.6-8ubuntu0.3) ...
+
+Selecting previously unselected package python-minimal.
+
+Preparing to unpack .../python-minimal_2.7.5-5ubuntu3_amd64.deb ...
+
+Unpacking python-minimal (2.7.5-5ubuntu3) ...
+
+Selecting previously unselected package python.
+
+Preparing to unpack .../python_2.7.5-5ubuntu3_amd64.deb ...
+
+Unpacking python (2.7.5-5ubuntu3) ...
+
+Selecting previously unselected package python-chardet.
+
+Preparing to unpack .../python-chardet_2.0.1-2build2_all.deb ...
+
+Unpacking python-chardet (2.0.1-2build2) ...
+
+Selecting previously unselected package python3-pkg-resources.
+
+Preparing to unpack .../python3-pkg-resources_3.3-1ubuntu2_all.deb ...
+
+Unpacking python3-pkg-resources (3.3-1ubuntu2) ...
+
+Selecting previously unselected package python-chardet-whl.
+
+Preparing to unpack .../python-chardet-whl_2.2.1-2~ubuntu1_all.deb ...
+
+Unpacking python-chardet-whl (2.2.1-2~ubuntu1) ...
+
+Selecting previously unselected package python-colorama.
+
+Preparing to unpack .../python-colorama_0.2.5-0.1ubuntu2_all.deb ...
+
+Unpacking python-colorama (0.2.5-0.1ubuntu2) ...
+
+Selecting previously unselected package python-colorama-whl.
+
+Preparing to unpack .../python-colorama-whl_0.2.5-0.1ubuntu2_all.deb ...
+
+Unpacking python-colorama-whl (0.2.5-0.1ubuntu2) ...
+
+Selecting previously unselected package python2.7-dev.
+
+Preparing to unpack .../python2.7-dev_2.7.6-8ubuntu0.3_amd64.deb ...
+
+Unpacking python2.7-dev (2.7.6-8ubuntu0.3) ...
+
+Selecting previously unselected package python-dev.
+
+Preparing to unpack .../python-dev_2.7.5-5ubuntu3_amd64.deb ...
+
+Unpacking python-dev (2.7.5-5ubuntu3) ...
+
+Selecting previously unselected package python-distlib.
+
+Preparing to unpack .../python-distlib_0.1.8-1ubuntu1_all.deb ...
+
+Unpacking python-distlib (0.1.8-1ubuntu1) ...
+
+Selecting previously unselected package python-distlib-whl.
+
+Preparing to unpack .../python-distlib-whl_0.1.8-1ubuntu1_all.deb ...
+
+Unpacking python-distlib-whl (0.1.8-1ubuntu1) ...
+
+Selecting previously unselected package python-six.
+
+Preparing to unpack .../python-six_1.5.2-1ubuntu1_all.deb ...
+
+Unpacking python-six (1.5.2-1ubuntu1) ...
+
+Selecting previously unselected package python-html5lib.
+
+Preparing to unpack .../python-html5lib_0.999-3~ubuntu1_all.deb ...
+
+Unpacking python-html5lib (0.999-3~ubuntu1) ...
+
+Selecting previously unselected package python-html5lib-whl.
+
+Preparing to unpack .../python-html5lib-whl_0.999-3~ubuntu1_all.deb ...
+
+Unpacking python-html5lib-whl (0.999-3~ubuntu1) ...
+
+Selecting previously unselected package python-six-whl.
+
+Preparing to unpack .../python-six-whl_1.5.2-1ubuntu1_all.deb ...
+
+Unpacking python-six-whl (1.5.2-1ubuntu1) ...
+
+Selecting previously unselected package python-urllib3-whl.
+
+Preparing to unpack .../python-urllib3-whl_1.7.1-1ubuntu4_all.deb ...
+
+Unpacking python-urllib3-whl (1.7.1-1ubuntu4) ...
+
+Selecting previously unselected package python-requests-whl.
+
+Preparing to unpack .../python-requests-whl_2.2.1-1ubuntu0.3_all.deb ...
+
+Unpacking python-requests-whl (2.2.1-1ubuntu0.3) ...
+
+Selecting previously unselected package python-setuptools-whl.
+
+Preparing to unpack .../python-setuptools-whl_3.3-1ubuntu2_all.deb ...
+
+Unpacking python-setuptools-whl (3.3-1ubuntu2) ...
+
+Selecting previously unselected package python-pip-whl.
+
+Preparing to unpack .../python-pip-whl_1.5.4-1ubuntu4_all.deb ...
+
+Unpacking python-pip-whl (1.5.4-1ubuntu4) ...
+
+Selecting previously unselected package python-pkg-resources.
+
+Preparing to unpack .../python-pkg-resources_3.3-1ubuntu2_all.deb ...
+
+Unpacking python-pkg-resources (3.3-1ubuntu2) ...
+
+Selecting previously unselected package python-urllib3.
+
+Preparing to unpack .../python-urllib3_1.7.1-1ubuntu4_all.deb ...
+
+Unpacking python-urllib3 (1.7.1-1ubuntu4) ...
+
+Selecting previously unselected package python-requests.
+
+Preparing to unpack .../python-requests_2.2.1-1ubuntu0.3_all.deb ...
+
+Unpacking python-requests (2.2.1-1ubuntu0.3) ...
+
+Selecting previously unselected package python-setuptools.
+
+Preparing to unpack .../python-setuptools_3.3-1ubuntu2_all.deb ...
+
+Unpacking python-setuptools (3.3-1ubuntu2) ...
+
+Selecting previously unselected package python-pip.
+
+Preparing to unpack .../python-pip_1.5.4-1ubuntu4_all.deb ...
+
+Unpacking python-pip (1.5.4-1ubuntu4) ...
+
+Selecting previously unselected package python-wheel.
+
+Preparing to unpack .../python-wheel_0.24.0-1~ubuntu1_all.deb ...
+
+Unpacking python-wheel (0.24.0-1~ubuntu1) ...
+
+Selecting previously unselected package python3-chardet.
+
+Preparing to unpack .../python3-chardet_2.2.1-2~ubuntu1_all.deb ...
+
+Unpacking python3-chardet (2.2.1-2~ubuntu1) ...
+
+Selecting previously unselected package python3-colorama.
+
+Preparing to unpack .../python3-colorama_0.2.5-0.1ubuntu2_all.deb ...
+
+Unpacking python3-colorama (0.2.5-0.1ubuntu2) ...
+
+Selecting previously unselected package python3.4-dev.
+
+Preparing to unpack .../python3.4-dev_3.4.3-1ubuntu1~14.04.5_amd64.deb ...
+
+Unpacking python3.4-dev (3.4.3-1ubuntu1~14.04.5) ...
+
+Selecting previously unselected package python3-dev.
+
+Preparing to unpack .../python3-dev_3.4.0-0ubuntu2_amd64.deb ...
+
+Unpacking python3-dev (3.4.0-0ubuntu2) ...
+
+Selecting previously unselected package python3-distlib.
+
+Preparing to unpack .../python3-distlib_0.1.8-1ubuntu1_all.deb ...
+
+Unpacking python3-distlib (0.1.8-1ubuntu1) ...
+
+Selecting previously unselected package python3-six.
+
+Preparing to unpack .../python3-six_1.5.2-1ubuntu1_all.deb ...
+
+Unpacking python3-six (1.5.2-1ubuntu1) ...
+
+Selecting previously unselected package python3-html5lib.
+
+Preparing to unpack .../python3-html5lib_0.999-3~ubuntu1_all.deb ...
+
+Unpacking python3-html5lib (0.999-3~ubuntu1) ...
+
+Selecting previously unselected package python3-urllib3.
+
+Preparing to unpack .../python3-urllib3_1.7.1-1ubuntu4_all.deb ...
+
+Unpacking python3-urllib3 (1.7.1-1ubuntu4) ...
+
+Selecting previously unselected package python3-requests.
+
+Preparing to unpack .../python3-requests_2.2.1-1ubuntu0.3_all.deb ...
+
+Unpacking python3-requests (2.2.1-1ubuntu0.3) ...
+
+Selecting previously unselected package python3-setuptools.
+
+Preparing to unpack .../python3-setuptools_3.3-1ubuntu2_all.deb ...
+
+Unpacking python3-setuptools (3.3-1ubuntu2) ...
+
+Selecting previously unselected package python3-pip.
+
+Preparing to unpack .../python3-pip_1.5.4-1ubuntu4_all.deb ...
+
+Unpacking python3-pip (1.5.4-1ubuntu4) ...
+
+Selecting previously unselected package python3-wheel.
+
+Preparing to unpack .../python3-wheel_0.24.0-1~ubuntu1_all.deb ...
+
+Unpacking python3-wheel (0.24.0-1~ubuntu1) ...
+
+Processing triggers for mime-support (3.54ubuntu1.1) ...
+
+Setting up libpython2.7-minimal:amd64 (2.7.6-8ubuntu0.3) ...
+
+Setting up libpython2.7-stdlib:amd64 (2.7.6-8ubuntu0.3) ...
+
+Setting up libpython2.7:amd64 (2.7.6-8ubuntu0.3) ...
+
+Setting up libexpat1-dev:amd64 (2.1.0-4ubuntu1.3) ...
+
+Setting up libpython2.7-dev:amd64 (2.7.6-8ubuntu0.3) ...
+
+Setting up libpython3.4:amd64 (3.4.3-1ubuntu1~14.04.5) ...
+
+Setting up libpython3.4-dev:amd64 (3.4.3-1ubuntu1~14.04.5) ...
+
+Setting up python2.7-minimal (2.7.6-8ubuntu0.3) ...
+
+Linking and byte-compiling packages for runtime python2.7...
+
+Setting up libpython-dev:amd64 (2.7.5-5ubuntu3) ...
+
+Setting up libpython-stdlib:amd64 (2.7.5-5ubuntu3) ...
+
+Setting up libpython3-dev:amd64 (3.4.0-0ubuntu2) ...
+
+Setting up python2.7 (2.7.6-8ubuntu0.3) ...
+
+Setting up python-minimal (2.7.5-5ubuntu3) ...
+
+Setting up python (2.7.5-5ubuntu3) ...
+
+Setting up python-chardet (2.0.1-2build2) ...
+
+Setting up python3-pkg-resources (3.3-1ubuntu2) ...
+
+Setting up python-chardet-whl (2.2.1-2~ubuntu1) ...
+
+Setting up python-colorama (0.2.5-0.1ubuntu2) ...
+
+Setting up python-colorama-whl (0.2.5-0.1ubuntu2) ...
+
+Setting up python2.7-dev (2.7.6-8ubuntu0.3) ...
+
+Setting up python-dev (2.7.5-5ubuntu3) ...
+
+Setting up python-distlib (0.1.8-1ubuntu1) ...
+
+Setting up python-distlib-whl (0.1.8-1ubuntu1) ...
+
+Setting up python-six (1.5.2-1ubuntu1) ...
+
+Setting up python-html5lib (0.999-3~ubuntu1) ...
+
+Setting up python-html5lib-whl (0.999-3~ubuntu1) ...
+
+Setting up python-six-whl (1.5.2-1ubuntu1) ...
+
+Setting up python-urllib3-whl (1.7.1-1ubuntu4) ...
+
+Setting up python-requests-whl (2.2.1-1ubuntu0.3) ...
+
+Setting up python-setuptools-whl (3.3-1ubuntu2) ...
+
+Setting up python-pip-whl (1.5.4-1ubuntu4) ...
+
+Setting up python-pkg-resources (3.3-1ubuntu2) ...
+
+Setting up python-urllib3 (1.7.1-1ubuntu4) ...
+
+Setting up python-requests (2.2.1-1ubuntu0.3) ...
+
+Setting up python-setuptools (3.3-1ubuntu2) ...
+
+Setting up python-pip (1.5.4-1ubuntu4) ...
+
+Setting up python-wheel (0.24.0-1~ubuntu1) ...
+
+Setting up python3-chardet (2.2.1-2~ubuntu1) ...
+
+Setting up python3-colorama (0.2.5-0.1ubuntu2) ...
+
+Setting up python3.4-dev (3.4.3-1ubuntu1~14.04.5) ...
+
+Setting up python3-dev (3.4.0-0ubuntu2) ...
+
+Setting up python3-distlib (0.1.8-1ubuntu1) ...
+
+Setting up python3-six (1.5.2-1ubuntu1) ...
+
+Setting up python3-html5lib (0.999-3~ubuntu1) ...
+
+Setting up python3-urllib3 (1.7.1-1ubuntu4) ...
+
+Setting up python3-requests (2.2.1-1ubuntu0.3) ...
+
+Setting up python3-setuptools (3.3-1ubuntu2) ...
+
+Setting up python3-pip (1.5.4-1ubuntu4) ...
+
+Setting up python3-wheel (0.24.0-1~ubuntu1) ...
+
+Processing triggers for libc-bin (2.19-0ubuntu6.11) ...
+
+ ---> d5cbc5a032dc
+
+Removing intermediate container 3fbd48864df8
+
+Step 7/10 : RUN pip install virtualenv
+
+ ---> Running in 56e29dda3a46
+
+Downloading/unpacking virtualenv
+
+Installing collected packages: virtualenv
+
+Successfully installed virtualenv
+Cleaning up...
+
+ ---> b7ac07499314
+
+Removing intermediate container 56e29dda3a46
+
+Step 8/10 : RUN /usr/local/bin/virtualenv /opt/ds --distribute --python=/usr/bin/python3
+
+ ---> Running in b4f3fd427100
+
+Using base prefix '/usr'
+New python executable in /opt/ds/bin/python3
+Also creating executable in /opt/ds/bin/python
+Installing setuptools, pip, wheel...
+done.
+
+Running virtualenv with interpreter /usr/bin/python3
+
+ ---> 1563ea2e3316
+
+Removing intermediate container b4f3fd427100
+
+Step 9/10 : RUN /opt/ds/bin/pip install -r CS2006Practical3/Dependencies/requirements.txt
+
+ ---> Running in 16f01a1d5c55
+
+Collecting appnope==0.1.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 1))
+
+  Downloading appnope-0.1.0-py2.py3-none-any.whl
+
+Collecting bleach==1.5.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 2))
+
+  Downloading bleach-1.5.0-py2.py3-none-any.whl
+
+Collecting cycler==0.10.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 3))
+
+  Downloading cycler-0.10.0-py2.py3-none-any.whl
+
+Collecting decorator==4.0.11 (from -r CS2006Practical3/Dependencies/requirements.txt (line 4))
+
+  Downloading decorator-4.0.11-py2.py3-none-any.whl
+
+Collecting entrypoints==0.2.2 (from -r CS2006Practical3/Dependencies/requirements.txt (line 5))
+
+  Downloading entrypoints-0.2.2-py2.py3-none-any.whl
+
+Collecting html5lib==0.999 (from -r CS2006Practical3/Dependencies/requirements.txt (line 6))
+
+  Downloading html5lib-0.999.tar.gz (885kB)
+
+Collecting ipykernel==4.5.2 (from -r CS2006Practical3/Dependencies/requirements.txt (line 7))
+
+  Downloading ipykernel-4.5.2-py2.py3-none-any.whl (98kB)
+
+Collecting ipython==5.3.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 8))
+
+  Downloading ipython-5.3.0-py3-none-any.whl (750kB)
+
+Collecting ipython-genutils==0.2.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 9))
+
+  Downloading ipython_genutils-0.2.0-py2.py3-none-any.whl
+
+Collecting ipywidgets==6.0.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 10))
+
+  Downloading ipywidgets-6.0.0-py2.py3-none-any.whl (46kB)
+
+Collecting Jinja2==2.9.5 (from -r CS2006Practical3/Dependencies/requirements.txt (line 11))
+
+  Downloading Jinja2-2.9.5-py2.py3-none-any.whl (340kB)
+
+Collecting jsonschema==2.5.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 12))
+
+  Downloading jsonschema-2.5.1-py2.py3-none-any.whl
+
+Collecting jupyter==1.0.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 13))
+
+  Downloading jupyter-1.0.0-py2.py3-none-any.whl
+
+Collecting jupyter-client==5.0.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 14))
+
+  Downloading jupyter_client-5.0.0-py2.py3-none-any.whl (83kB)
+
+Collecting jupyter-console==5.1.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 15))
+
+  Downloading jupyter_console-5.1.0-py2.py3-none-any.whl
+
+Collecting jupyter-core==4.3.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 16))
+
+  Downloading jupyter_core-4.3.0-py2.py3-none-any.whl (76kB)
+
+Collecting MarkupSafe==0.23 (from -r CS2006Practical3/Dependencies/requirements.txt (line 17))
+
+  Downloading MarkupSafe-0.23.tar.gz
+
+Collecting matplotlib==2.0.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 18))
+
+  Downloading matplotlib-2.0.0-cp34-cp34m-manylinux1_x86_64.whl (14.7MB)
+
+Collecting mistune==0.7.4 (from -r CS2006Practical3/Dependencies/requirements.txt (line 19))
+
+  Downloading mistune-0.7.4-py2.py3-none-any.whl
+
+Collecting nbconvert==5.1.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 20))
+
+  Downloading nbconvert-5.1.1-py2.py3-none-any.whl (372kB)
+
+Collecting nbformat==4.3.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 21))
+
+  Downloading nbformat-4.3.0-py2.py3-none-any.whl (154kB)
+
+Collecting notebook==4.4.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 22))
+
+  Downloading notebook-4.4.1-py2.py3-none-any.whl (6.9MB)
+
+Collecting numpy==1.12.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 23))
+
+  Downloading numpy-1.12.1-cp34-cp34m-manylinux1_x86_64.whl (16.8MB)
+
+Collecting pandas==0.19.2 (from -r CS2006Practical3/Dependencies/requirements.txt (line 24))
+
+  Downloading pandas-0.19.2-cp34-cp34m-manylinux1_x86_64.whl (18.7MB)
+
+Collecting pandocfilters==1.4.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 25))
+
+  Downloading pandocfilters-1.4.1.tar.gz
+
+Collecting pexpect==4.2.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 26))
+
+  Downloading pexpect-4.2.1-py2.py3-none-any.whl (55kB)
+
+Collecting pickleshare==0.7.4 (from -r CS2006Practical3/Dependencies/requirements.txt (line 27))
+
+  Downloading pickleshare-0.7.4-py2.py3-none-any.whl
+
+Collecting prompt-toolkit==1.0.13 (from -r CS2006Practical3/Dependencies/requirements.txt (line 28))
+
+  Downloading prompt_toolkit-1.0.13-py3-none-any.whl (247kB)
+
+Collecting ptyprocess==0.5.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 29))
+
+  Downloading ptyprocess-0.5.1-py2.py3-none-any.whl
+
+Collecting Pygments==2.2.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 30))
+
+  Downloading Pygments-2.2.0-py2.py3-none-any.whl (841kB)
+
+Collecting pyparsing==2.1.4 (from -r CS2006Practical3/Dependencies/requirements.txt (line 31))
+
+  Downloading pyparsing-2.1.4-py2.py3-none-any.whl (40kB)
+
+Collecting python-dateutil==2.6.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 32))
+
+  Downloading python_dateutil-2.6.0-py2.py3-none-any.whl (194kB)
+
+Collecting pytz==2016.10 (from -r CS2006Practical3/Dependencies/requirements.txt (line 33))
+
+  Downloading pytz-2016.10-py2.py3-none-any.whl (483kB)
+
+Collecting pyzmq==16.0.2 (from -r CS2006Practical3/Dependencies/requirements.txt (line 34))
+
+  Downloading pyzmq-16.0.2-cp34-cp34m-manylinux1_x86_64.whl (3.1MB)
+
+Collecting qtconsole==4.2.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 35))
+
+  Downloading qtconsole-4.2.1-py2.py3-none-any.whl (104kB)
+
+Collecting simplegeneric==0.8.1 (from -r CS2006Practical3/Dependencies/requirements.txt (line 36))
+
+  Downloading simplegeneric-0.8.1.zip
+
+Requirement already satisfied: six==1.10.0 in /opt/ds/lib/python3.4/site-packages (from -r CS2006Practical3/Dependencies/requirements.txt (line 37))
+
+Collecting terminado==0.6 (from -r CS2006Practical3/Dependencies/requirements.txt (line 38))
+
+  Downloading terminado-0.6.tar.gz
+
+Collecting testpath==0.3 (from -r CS2006Practical3/Dependencies/requirements.txt (line 39))
+
+  Downloading testpath-0.3-py2.py3-none-any.whl (82kB)
+
+Collecting tornado==4.4.2 (from -r CS2006Practical3/Dependencies/requirements.txt (line 40))
+
+  Downloading tornado-4.4.2.tar.gz (460kB)
+
+Collecting traitlets==4.3.2 (from -r CS2006Practical3/Dependencies/requirements.txt (line 41))
+
+  Downloading traitlets-4.3.2-py2.py3-none-any.whl (74kB)
+
+Collecting wcwidth==0.1.7 (from -r CS2006Practical3/Dependencies/requirements.txt (line 42))
+
+  Downloading wcwidth-0.1.7-py2.py3-none-any.whl
+
+Collecting widgetsnbextension==2.0.0 (from -r CS2006Practical3/Dependencies/requirements.txt (line 43))
+
+  Downloading widgetsnbextension-2.0.0-py2.py3-none-any.whl (1.1MB)
+
+Requirement already satisfied: setuptools>=18.5 in /opt/ds/lib/python3.4/site-packages (from ipython==5.3.0->-r CS2006Practical3/Dependencies/requirements.txt (line 8))
+
+Collecting backports_abc>=0.4 (from tornado==4.4.2->-r CS2006Practical3/Dependencies/requirements.txt (line 40))
+
+  Downloading backports_abc-0.5-py2.py3-none-any.whl
+
+Requirement already satisfied: packaging>=16.8 in /opt/ds/lib/python3.4/site-packages (from setuptools>=18.5->ipython==5.3.0->-r CS2006Practical3/Dependencies/requirements.txt (line 8))
+
+Requirement already satisfied: appdirs>=1.4.0 in /opt/ds/lib/python3.4/site-packages (from setuptools>=18.5->ipython==5.3.0->-r CS2006Practical3/Dependencies/requirements.txt (line 8))
+
+Building wheels for collected packages: html5lib, MarkupSafe, pandocfilters, simplegeneric, terminado, tornado
+
+  Running setup.py bdist_wheel for html5lib: started
+
+  Running setup.py bdist_wheel for html5lib: finished with status 'done'
+
+  Stored in directory: /root/.cache/pip/wheels/4c/23/29/66d98ba877044f1f74ed365f4beb463affc0670710f1f44ca4
+
+  Running setup.py bdist_wheel for MarkupSafe: started
+
+  Running setup.py bdist_wheel for MarkupSafe: finished with status 'done'
+
+  Stored in directory: /root/.cache/pip/wheels/a3/fa/dc/0198eed9ad95489b8a4f45d14dd5d2aee3f8984e46862c5748
+
+  Running setup.py bdist_wheel for pandocfilters: started
+
+  Running setup.py bdist_wheel for pandocfilters: finished with status 'done'
+
+  Stored in directory: /root/.cache/pip/wheels/d4/01/68/49055c80b9f01ccb49241e73c8019628605064730941d70b56
+
+  Running setup.py bdist_wheel for simplegeneric: started
+
+  Running setup.py bdist_wheel for simplegeneric: finished with status 'done'
+
+  Stored in directory: /root/.cache/pip/wheels/7b/31/08/c85e74c84188cbec6a6827beec4d640f2bd78ae003dc1ec09d
+
+  Running setup.py bdist_wheel for terminado: started
+
+  Running setup.py bdist_wheel for terminado: finished with status 'done'
+
+  Stored in directory: /root/.cache/pip/wheels/3b/c2/ea/af635ffb63857a8c2ddd22da6a4b52f5b7ea3065db94ef5d7c
+
+  Running setup.py bdist_wheel for tornado: started
+
+  Running setup.py bdist_wheel for tornado: finished with status 'done'
+
+  Stored in directory: /root/.cache/pip/wheels/b3/db/47/46e05d1ee3ecfba252fcab42f0a156dab0df0cddf99fa0827c
+
+Successfully built html5lib MarkupSafe pandocfilters simplegeneric terminado tornado
+
+Installing collected packages: appnope, html5lib, bleach, cycler, decorator, entrypoints, ipython-genutils, traitlets, jupyter-core, pyzmq, python-dateutil, jupyter-client, pickleshare, simplegeneric, Pygments, wcwidth, prompt-toolkit, ptyprocess, pexpect, ipython, backports-abc, tornado, ipykernel, testpath, jsonschema, nbformat, mistune, pandocfilters, MarkupSafe, Jinja2, nbconvert, terminado, notebook, widgetsnbextension, ipywidgets, qtconsole, jupyter-console, jupyter, numpy, pytz, pyparsing, matplotlib, pandas
+
+  Found existing installation: pyparsing 2.2.0
+
+    Uninstalling pyparsing-2.2.0:
+
+      Successfully uninstalled pyparsing-2.2.0
+
+Successfully installed Jinja2-2.9.5 MarkupSafe-0.23 Pygments-2.2.0 appnope-0.1.0 backports-abc-0.5 bleach-1.5.0 cycler-0.10.0 decorator-4.0.11 entrypoints-0.2.2 html5lib-0.999 ipykernel-4.5.2 ipython-5.3.0 ipython-genutils-0.2.0 ipywidgets-6.0.0 jsonschema-2.5.1 jupyter-1.0.0 jupyter-client-5.0.0 jupyter-console-5.1.0 jupyter-core-4.3.0 matplotlib-2.0.0 mistune-0.7.4 nbconvert-5.1.1 nbformat-4.3.0 notebook-4.4.1 numpy-1.12.1 pandas-0.19.2 pandocfilters-1.4.1 pexpect-4.2.1 pickleshare-0.7.4 prompt-toolkit-1.0.13 ptyprocess-0.5.1 pyparsing-2.1.4 python-dateutil-2.6.0 pytz-2016.10 pyzmq-16.0.2 qtconsole-4.2.1 simplegeneric-0.8.1 terminado-0.6 testpath-0.3 tornado-4.4.2 traitlets-4.3.2 wcwidth-0.1.7 widgetsnbextension-2.0.0
+
+ ---> afeebae6cd90
+
+Removing intermediate container 16f01a1d5c55
+
+Step 10/10 : EXPOSE 8888
+
+ ---> Running in 1aa706b27efb
+
+ ---> ac98b3d302e2
+
+Removing intermediate container 1aa706b27efb
+
+Successfully built ac98b3d302e2
+
+Pushing index.docker.io/chrisrauch193/cs2006practical3:latest...
+Done!
+Build finished
