@@ -1,8 +1,8 @@
 # CS2006Practical3: Python 2
 
-The following dependencies are required:
+The following dependencies are required to run the analysis locally:
 
-  - python=3.6
+  - python
   - numpy
   - matplotlib
   - pandas
@@ -21,21 +21,22 @@ After installing ipywidgets, you will need to enable the ipywidgets extension us
 
   jupyter nbextension enable --py widgetsnbextension --sys-prefix
 
-Installing basemap through pip will also require geos and proj4, which must be downloaded from their respective websites and built
-from source files.  This will not work without administrator privileges on lab machines.
+Installing basemap through pip requires geos and proj4 to be installed separately.  These tools must be downloaded from their respective websites and built
+from source.  This will not work without administrator privileges on lab machines, but the instructions to set up this environment where these privileges are available are available at matplotlib.org/basemap/users/installing.html.
 
+If you are unable to install basemap, all other sections of the notebook will work apart from the BaseMap plot of the regions by population.
 
 2. Anaconda
 
-If using Anaconda, install the dependencies using conda.  The ipywidgets extension should already be enabled.
+If using Anaconda, install the dependencies using the conda tool.  The ipywidgets extension should be automatically enabled using this method.
 
-Installing basemap through conda also installs geos and proj4, and so this is the preferred method for enabling basemap functionality.  If you are unable to install anaconda, all other sections of the notebook will work apart from the BaseMap plot of the regions by population.
+Installing basemap through conda also installs geos and proj4, and so this is the preferred method for enabling basemap functionality.
 
 
 3. Binder
 
-The Binder virtual environment has also been provided to run the project without access to any of the dependencies.  An environment.yml file is included in the project which describes the dependencies required to run, and an environment has been pre-built which can be accessed at the following link:
+The Binder virtual environment has also been provided to run the project without access to any of the dependencies.  An environment.yml file is included in the project which describes the dependencies required to run.  The environment itself has been pre-built, and can be accessed at the following link:
 
-...
+  mybinder.org/repo/chrisrauch193/cs2006practical3
 
 The first attempt at launching may result in failure, but refreshing will fix this problem.
